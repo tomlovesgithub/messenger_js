@@ -9,19 +9,25 @@ window.onload = function() {
   submit.addEventListener("click", addToMessageHistory);
 
   function addToMessageHistory() {
-    input = document.getElementById('Input').value;
+
+    var input = document.getElementById('Input').value;
+
     messageHistory.addToHistory(new Message(input, new Date))
+
+    // creates some empty HTML objects
     list_item = document.createElement('p')
     list_date = document.createElement('text')
     list_text = document.createElement('text')
+    // takes text from array element properties and adds it to html objects
     list_text.innerText = messageHistory.history[0].text
-    list_item.appendChild(list_text)
-    list_item.appendChild(document.createElement('br'))
-    list_date.innerText = (messageHistory.history[0].date.toLocaleDateString() + "/" + messageHistory.history[0].date.toLocaleTimeString())
-    list_item.appendChild(list_date)
-    msg_list.appendChild(list_item)
+    list_date.innerText = messageHistory.history[0].date.toLocaleDateString() + "/" + messageHistory.history[0].date.toLocaleTimeString()
+    // adds each object to the page
+    list_item.prepend(list_text)
+    list_item.prepend(document.createElement('br'))
+    list_item.prepend(list_date)
+    msg_list.prepend(list_item)
+    //  clears the textbox
     document.getElementById('Input').value = ""
   }
-
 
 }
