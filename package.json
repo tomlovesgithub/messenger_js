@@ -2,7 +2,7 @@
   "name": "js_messenger",
   "version": "1.0.0",
   "description": "",
-  "main": "bundle.js",
+  "main": "interface.js",
   "scripts": {
     "test": "jest",
     "build": "browserify interface.js -o bundle.js"
@@ -11,7 +11,6 @@
   "license": "ISC",
   "devDependencies": {
     "browserify": "^16.2.3",
-    "jest": "^24.5.0",
-    "tinyify": "^2.5.0"
+    "jest": "^24.5.0"
   }
 }

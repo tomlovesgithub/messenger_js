@@ -4,11 +4,14 @@ window.onload = function() {
 
   const messageHistory = new MessageHistory
 
-  var msg_list = document.getElementById('msg_list')
+  const msg_list = document.getElementById('msg_list')
+  const title = document.getElementById('title')
   submit = document.getElementById('submit')
   submit.addEventListener("click", addToMessageHistory);
 
   function addToMessageHistory() {
+
+    title.classList.add('playing')
 
     var input = document.getElementById('Input').value;
 
@@ -20,7 +23,7 @@ window.onload = function() {
     list_text = document.createElement('text')
     // takes text from array element properties and adds it to html objects
     list_text.innerText = messageHistory.history[0].text
-    list_date.innerText = messageHistory.history[0].date.toLocaleDateString() + "/" + messageHistory.history[0].date.toLocaleTimeString()
+    list_date.innerText = messageHistory.history[0].date.toLocaleDateString() + "\n" + messageHistory.history[0].date.toLocaleTimeString()
     // adds each object to the page
     list_item.prepend(list_text)
     list_item.prepend(document.createElement('br'))
@@ -28,6 +31,14 @@ window.onload = function() {
     msg_list.prepend(list_item)
     //  clears the textbox
     document.getElementById('Input').value = ""
+    title.addEventListener('transitionend', removeTransition)
+  }
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') {
+      return
+    }
+    e.target.classList.remove('playing')
   }
 
 }
