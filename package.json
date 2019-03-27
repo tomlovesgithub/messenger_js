@@ -4,11 +4,14 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "NODE_ENV=production node ./interface.js",
+    "build": "browserify interface.js -o bundle.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "browserify": "^16.2.3",
     "jest": "^24.5.0"
   }
 }
