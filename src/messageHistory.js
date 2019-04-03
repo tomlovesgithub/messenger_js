@@ -1,10 +1,10 @@
 module.exports = (
   class MessageHistory {
-    constructor() {
+    constructor () {
       this.history = []
     }
 
-    addToHistory(message){
+    addToHistory (message) {
       this.history.unshift(message)
     }
   }
